@@ -1,20 +1,80 @@
-@*
- * This template takes a two arguments, a String containing a
- * message to display and an AssetsFinder to locate static assets.
- *@
-@(message: String)(implicit assetsFinder: AssetsFinder)
+@()
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play", assetsFinder) {
+@main("HTWG Schach") {
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "scala")
+    <h1>About Chess</h1>
+
+    <p>
+        Chess is a two-player strategy board game played on a chessboard, a checkered gameboard
+        with 64 squares arranged in an 8×8 grid.[1] The game is played by millions of people worldwide.
+        Chess is believed to be derived from the Indian game chaturanga some time before the 7th century.
+        Chaturanga is also the likely ancestor of the Eastern strategy games xiangqi, janggi, and shogi.
+        Chess reached Europe by the 9th century, due to the Umayyad conquest of Hispania. The pieces
+        assumed their current powers in Spain in the late 15th century with the introduction of
+        "Mad Queen Chess"; the modern rules were standardized in the 19th century.
+
+        Play does not involve hidden information. Each player begins with 16 pieces: one king, one queen,
+        two rooks, two knights, two bishops, and eight pawns. Each of the six piece types moves differently,
+        with the most powerful being the queen and the least powerful the pawn. The objective is to checkmate[note 1]
+        the opponent's king by placing it under an inescapable threat of capture. To this end, a player's pieces
+        are used to attack and capture the opponent's pieces, while supporting each other. During the game, play
+        typically involves making exchanges of one piece for an opponent's similar piece, but also finding and
+        engineering opportunities to trade advantageously, or to get a better position. In addition to checkmate,
+        a player wins the game if the opponent resigns, or (in a timed game) runs out of time. There are also
+        several ways that a game can end in a draw.
+    </p>
+
+    <h1>Rules</h1>
+
+    <h3>How to Move the King</h3>
+
+    <p>
+        The king is the most important piece, but is one of the weakest. The king can only move one square in any
+        direction - up, down, to the sides, and diagonally. The king may never move himself into check (where he
+        could be captured). When the king is attacked by another piece this is called "check".
+    </p>
+
+    <h3>How to Move the Queen</h3>
+
+    <p>
+        The queen is the most powerful piece. She can move in any one straight direction - forward, backward,
+        sideways, or diagonally - as far as possible as long as she does not move through any of her own pieces.
+        And, like with all pieces, if the queen captures an opponent's piece her move is over. Notice how the
+        white queen captures the black queen and then the black king is forced to move.
+    </p>
+
+    <h3>How to Move the Rook</h3>
+
+    <p>
+        The rook may move as far as it wants, but only forward, backward, and to the sides. The rooks are
+        particularly powerful pieces when they are protecting each other and working together!
+    </p>
+
+    <h3>How to Move the Bishop</h3>
+
+    <p>
+        The bishop may move as far as it wants, but only diagonally. Each bishop starts on one color
+        (light or dark) and must always stay on that color. Bishops work well together because they cover
+        up each other's weaknesses.
+    </p>
+
+    <h3>How to Move the Knight</h3>
+
+    <p>
+        Knights move in a very different way from the other pieces – going two squares in one direction,
+        and then one more move at a 90 degree angle, just like the shape of an “L”. Knights are also the
+        only pieces that can move over other pieces.
+    </p>
+
+    <h3>How to Move the Pawn</h3>
+
+    <p>
+        Pawns are unusual because they move and capture in different ways: they move forward, but capture
+        diagonally. Pawns can only move forward one square at a time, except for their very first move where
+        they can move forward two squares. Pawns can only capture one square diagonally in front of them.
+        They can never move or capture backwards. If there is another piece directly in front of a pawn he
+        cannot move past or capture that piece.
+    </p>
+
 
 }
