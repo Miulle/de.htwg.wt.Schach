@@ -1,0 +1,23 @@
+body {
+    background-color: #D8D8D8;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-family: impact;
+    font-size: 50px;
+
+
+}h3 {
+    color: black;
+    text-align: left;
+    font-family: impact;
+    font-size: 30px;
+}
+
+p {
+    font-family: Agency FB;
+    font-size: 20px;
+    text-align: left;
+}
