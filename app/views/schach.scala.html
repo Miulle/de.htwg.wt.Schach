@@ -1,3 +1,4 @@
+@import de.htwg.se.ChinaSchach.util.Point
 @(controller:de.htwg.se.ChinaSchach.controller.controllerComponent.ControllerInterface)
 
 @tile(i: Int, j: Int) = @{
@@ -19,19 +20,18 @@
 @main("HTWG Schach") {
     <div class="gamecontainer">
         <div class="game">
-        @for(row <- 0 until size) {
-            <div class="house size@size">
-            @for(col <- 0 until size) {
+        @for(row <- 0 until 8) {
+            @for(col <- 0 until 8) {
                 <span class="cell">
-                    <span class="@{"number"}">
-                    @{if(controller.cell(row, col).isSet) {controller.cell(row,col).toString.take(1)} else "_"}
+                    <span class="@{"Piece"}">
+                    @{controller.getPiece(Point(col, row))}
                     </span>
 
                 </span>
             }
-            </div>
-            <div class="clear"></div>
-        }
         </div>
+        <div class="clear"></div>
+        }
+    </div>
     </div>
 }
