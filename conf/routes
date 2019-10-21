@@ -14,4 +14,6 @@ GET     /assets/*file               controllers.Assets.versioned(file)
 
 GET     /schach                      controllers.SchachController.schach
 
+GET     /schach/move/:from1/:from2/:to1/:to2                 controllers.SchachController.move(from1: Int, from2: Int, to1: Int, to2: Int)
+
 GET     /about                      controllers.SchachController.about

@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 import play.api.mvc._
 import de.htwg.se.ChinaSchach.ChinaSchach
-import de.htwg.se.ChinaSchach.aview.Tui
+import de.htwg.se.ChinaSchach.util.Point
 
 @Singleton
 class SchachController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -15,6 +15,12 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
   }
 
   def schach = Action {
-    Ok(boardAsText)
+    Ok(views.html.schach(gameController))
+  }
+
+  def move (from1: Int, from2: Int, to1: Int, to2: Int) = Action {
+    gameController.savePiecePoint(Point(from1, from2))
+    gameController.getSelectedPoint(Point(to1, to2))
+    Ok(views.html.schach(gameController))
   }
 }

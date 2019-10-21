@@ -1,0 +1,37 @@
+@(controller:de.htwg.se.ChinaSchach.controller.controllerComponent.ControllerInterface)
+
+@tile(i: Int, j: Int) = @{
+    if(i % 2 == 0){
+        if(j % 2 == 0){
+            "brownTile"
+        }else{
+            "whiteTile"
+        }
+    }else{
+        if(j % 2 == 0){
+            "whiteTile"
+        }else{
+            "brownTile"
+        }
+    }
+}
+
+@main("HTWG Schach") {
+    <div class="gamecontainer">
+        <div class="game">
+        @for(row <- 0 until size) {
+            <div class="house size@size">
+            @for(col <- 0 until size) {
+                <span class="cell">
+                    <span class="@{"number"}">
+                    @{if(controller.cell(row, col).isSet) {controller.cell(row,col).toString.take(1)} else "_"}
+                    </span>
+
+                </span>
+            }
+            </div>
+            <div class="clear"></div>
+        }
+        </div>
+    </div>
+}
