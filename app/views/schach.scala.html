@@ -5,7 +5,7 @@
 
 @piece(i: Int, j: Int) = @{
     controller.getPiece(Point(i, j)) match {
-        case "Rook(b)" => <span><span>&#9820;</span></span>
+        case "Rook(b)" => <span>&#9820;</span>
         case "Rook(w)" => <span>&#9814;</span>
         case "Knight(b)" => <span>&#9822;</span>
         case "Knight(w)" => <span>&#9816;</span>
@@ -21,6 +21,7 @@
 
     }
 }
+
 
 @main("HTWG Schach") {
     <div class="chessboard">
