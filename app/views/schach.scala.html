@@ -1,37 +1,54 @@
 @import de.htwg.se.ChinaSchach.util.Point
 @(controller:de.htwg.se.ChinaSchach.controller.controllerComponent.ControllerInterface)
 
-@tile(i: Int, j: Int) = @{
-    if(i % 2 == 0){
-        if(j % 2 == 0){
-            "brownTile"
-        }else{
-            "whiteTile"
-        }
-    }else{
-        if(j % 2 == 0){
-            "whiteTile"
-        }else{
-            "brownTile"
-        }
+<link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/chess.css")' />
+
+@piece(i: Int, j: Int) = @{
+    controller.getPiece(Point(i, j)) match {
+        case "Rook(b)" => <span><span>&#9820;</span></span>
+        case "Rook(w)" => <span>&#9814;</span>
+        case "Knight(b)" => <span>&#9822;</span>
+        case "Knight(w)" => <span>&#9816;</span>
+        case "Bishop(b)" => <span>&#9821;</span>
+        case "Bishop(w)" => <span>&#9815;</span>
+        case "Queen(b)" => <span>&#9819;</span>
+        case "Queen(w)" => <span>&#9813;</span>
+        case "King(b)" => <span>&#9818;</span>
+        case "King(w)" => <span>&#9812;</span>
+        case "Pawn(b)" => <span>&#9823;</span>
+        case "Pawn(w)" => <span>&#9817;</span>
+        case "EmptyField( )" => ""
+
     }
 }
 
 @main("HTWG Schach") {
-    <div class="gamecontainer">
-        <div class="game">
+    <div class="chessboard">
         @for(row <- 0 until 8) {
             @for(col <- 0 until 8) {
-                <span class="cell">
-                    <span class="@{"Piece"}">
-                    @{controller.getPiece(Point(col, row))}
-                    </span>
-
-                </span>
+                @if(row % 2 == 0){
+                    @if(col % 2 == 0){
+                        <div class= "@{"black"}">
+                            @piece(col, row)
+                        </div>
+                    }else{
+                        <div class= "@{"white"}">
+                            @piece(col, row)
+                        </div>
+                    }
+                }else{
+                    @if(col % 2 == 0){
+                        <div class= "@{"white"}">
+                            @piece(col, row)
+                        </div>
+                    }else{
+                        <div class= "@{"black"}">
+                            @piece(col, row)
+                        </div>
+                    }
+                }
             }
-        </div>
-        <div class="clear"></div>
+            <div class="clear"></div>
         }
-    </div>
     </div>
 }
