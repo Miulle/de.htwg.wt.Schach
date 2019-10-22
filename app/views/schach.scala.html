@@ -1,22 +1,6 @@
 @import de.htwg.se.ChinaSchach.util.Point
 @(controller:de.htwg.se.ChinaSchach.controller.controllerComponent.ControllerInterface)
 
-@tile(i: Int, j: Int) = @{
-    if(i % 2 == 0){
-        if(j % 2 == 0){
-            "brownTile"
-        }else{
-            "whiteTile"
-        }
-    }else{
-        if(j % 2 == 0){
-            "whiteTile"
-        }else{
-            "brownTile"
-        }
-    }
-}
-
 @main("HTWG Schach") {
     <div class="gamecontainer">
         <div class="game">
