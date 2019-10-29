@@ -47,24 +47,36 @@ p {
     border: 25px solid #333;
 }
 .black {
+    display: inline-block;
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 1.2em;
+    height: 1.2em;
     background-color: #999;
     font-size:50px;
     text-align:center;
-    display: table-cell;
     vertical-align:middle;
 }
 .white {
+    display: inline-block;
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 1.2em;
+    height: 1.2em;
     background-color: #fff;
     font-size:50px;
     text-align:center;
-    display: table-cell;
     vertical-align:middle;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
 }
 
 .buttonbarcontainer {
