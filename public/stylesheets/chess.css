@@ -27,37 +27,40 @@ p {
 }
 
 .pagecontainer {
-    width: 33.5em;
+    width: 100%;
+    height: 100%;
     margin: auto;
-    margin-top: 1em;
+    margin-top: auto;
+    /*border-style: solid;*/
+    /*border: 14em solid #333;*/
 }
 
 .game {
     border-style: inset;
     border-width: 0.5em;
+    width: auto;
+    height: auto;
 }
 
-@media (min-width: 1000px) {
-    .chessboard {
-        /*border-style: inset;
-        border-width: 0.5em;*/
-        width: 12em;
-        height: 12em;
-        display: inline-flex;
-        margin: 0em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        padding: 0.5em
-        /*border: 14em solid #333;*/
-    }
+.chessboard {
+    /*border-style: inset;
+    border-width: 0.5em;*/
+    width: 12em;
+    height: 12em;
+    display: inline-flex;
+    margin: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.5em
+    /*border: 14em solid #333;*/
 }
-
 
 .cell {
     display: inline-block;
-    width: 1.2em;
-    height: 1.2em;
-    margin:0.1em;
+    width: auto;
+    float: left;
+    height: auto;
+    /*margin:0.1em;*/
 }
 
 .black {
