@@ -47,38 +47,45 @@
         </div>
     </nav>
 
-    <div class="pagecontainer">
-        <div class="chessboard">
-        @for(row <- 0 until 8) {
-            <div class="cell">
-                @for(col <- 0 until 8) {
-                    <div class="cell">
-                    @if(row % 2 == 0){
-                        @if(col % 2 == 0){
-                            <div class="@{"black"}">
-                            @piece(col, row)
-                            </div>
-                        }else{
-                            <div class="@{"white"}">
-                            @piece(col, row)
-                            </div>
-                        }
-                    }else{
-                        @if(col % 2 == 0){
-                            <div class="@{"white"}">
-                            @piece(col, row)
-                            </div>
-                        }else{
-                            <div class="@{"black"}">
-                            @piece(col, row)
-                            </div>
-                        }
-                    }
-                    </div>
-                }
-            <div class="clear"></div>
+
+
+
+        <div class="pagecontainer">
+            <div class="buttonbarcontainer">
+                <a href="/restart" class="btn btn-primary">Restart<br></a>
             </div>
-        }
+            <div class="chessboard">
+
+            @for(row <- 0 until 8) {
+                <div class="cell">
+                    @for(col <- 0 until 8) {
+                        <div class="cell">
+                        @if(row % 2 == 0){
+                            @if(col % 2 == 0){
+                                <div class="@{"black"}">
+                                @piece(col, row)
+                                </div>
+                            }else{
+                                <div class="@{"white"}">
+                                @piece(col, row)
+                                </div>
+                            }
+                        }else{
+                            @if(col % 2 == 0){
+                                <div class="@{"white"}">
+                                @piece(col, row)
+                                </div>
+                            }else{
+                                <div class="@{"black"}">
+                                @piece(col, row)
+                                </div>
+                            }
+                        }
+                        </div>
+                    }
+                <div class="clear"></div>
+                </div>
+            }
+            </div>
         </div>
-    </div>
 }

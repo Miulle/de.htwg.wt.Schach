@@ -23,4 +23,9 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
     gameController.getSelectedPoint(Point(to1, to2))
     Ok(views.html.schach(gameController))
   }
+
+  def restart = Action {
+    gameController.reset()
+    Ok(views.html.schach(gameController))
+  }
 }
