@@ -38,46 +38,46 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="/schach">Play Chess</a>
                 </li>
             </ul>
         </div>
     </nav>
-
-
         <div class="chessboard">
-            @for(row <- 0 until 8) {
-                <div class="row">
+
+        @for(row <- 0 until 8) {
+            <div class="row">
                 @for(col <- 0 until 8) {
                     <div class="col">
                     @if(row % 2 == 0){
                         @if(col % 2 == 0){
-                            <div class= "@{"black"}">
-                                @piece(col, row)
+                            <div class="@{"black"}">
+                            @piece(col, row)
                             </div>
                         }else{
-                            <div class= "@{"white"}">
-                                @piece(col, row)
+                            <div class="@{"white"}">
+                            @piece(col, row)
                             </div>
                         }
                     }else{
                         @if(col % 2 == 0){
-                            <div class= "@{"white"}">
-                                @piece(col, row)
+                            <div class="@{"white"}">
+                            @piece(col, row)
                             </div>
                         }else{
-                            <div class= "@{"black"}">
-                                @piece(col, row)
+                            <div class="@{"black"}">
+                            @piece(col, row)
                             </div>
                         }
                     }
                     </div>
                 }
 
-                <div class="clear"></div>
-                </div>
-            }
+            <div class="clear"></div>
+            </div>
+        }
         </div>
-        <a href="/" class="btn btn-primary">Back to index</a>
-
 }
