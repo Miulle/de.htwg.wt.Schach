@@ -2,10 +2,6 @@ body {
     background-color: #D8D8D8;
 }
 
-a:link {
-    color: black;
-}
-
 h1 {
     color: black;
     text-align: center;
@@ -14,11 +10,11 @@ h1 {
 
 
 }h3 {
-    color: black;
-    text-align: left;
-    font-family: impact;
-    font-size: 30px;
-}
+     color: black;
+     text-align: left;
+     font-family: impact;
+     font-size: 30px;
+ }
 
 p {
     font-family: Agency FB;
@@ -26,87 +22,32 @@ p {
     text-align: left;
 }
 
-.pagecontainer {
-    float: left;
-    width: 12.5em;
-    height: 12.5em;
-    margin: auto;
-    margin-top: auto;
-    /*border-style: solid;*/
-    /*border: 14em solid #333;*/
-}
-
-.game {
-    border-style: inset;
-    border-width: 0.5em;
-    width: auto;
-}
-
-.boardcontainer {
-    border-style: inherit;
-    border-width: 13em;
-    border-height: 13em;
-    float: left;
-    padding: 0.5em;
-    height: 13em;
-    width: 13em;
-}
-
 .chessboard {
-    /*border-style: inset;
-    border-width: 0.5em;*/
-    width: 100%;
-    height: 100%;
-    display: inline-flex;
-    margin: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    padding: 0.5em
-    /*border: 14em solid #333;*/
+    width:690px;
+    height: 690px;
+    margin: 20px;
+    border: 25px solid #333;
 }
-
-.cell {
-    display: inline-block;
-    width: auto;
-    float: left;
-    height: auto;
-    /*margin:0.1em;*/
-}
-
 .black {
-    display: inline-block;
     float: left;
-    width: 1.5em;
-    height: 1.5em;
+    width: 80px;
+    height: 80px;
     background-color: #999;
-    font-size:40px;
+    font-size:50px;
     text-align:center;
+    display: table-cell;
     vertical-align:middle;
 }
 .white {
-    display: inline-block;
     float: left;
-    width: 1.5em;
-    height: 1.5em;
+    width: 80px;
+    height: 80px;
     background-color: #fff;
-    font-size:40px;
+    font-size:50px;
     text-align:center;
+    display: table-cell;
     vertical-align:middle;
 }
-
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-.buttonbarcontainer {
-    margin: auto;
-    display: inline-block;
+.buttoncontainer {
+    margin: 20px;
 }
