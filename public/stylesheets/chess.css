@@ -2,6 +2,10 @@ body {
     background-color: #D8D8D8;
 }
 
+a:link {
+    color: black;
+}
+
 h1 {
     color: black;
     text-align: center;
@@ -22,10 +26,24 @@ p {
     text-align: left;
 }
 
+.pagecontainer {
+    width: 33.5em;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.game {
+    border-style: inset;
+    border-width: 0.5em;
+}
+
 .chessboard {
-    width: 640px;
-    height: 640px;
-    margin: 20px;
+    width: 75%;
+    height: 100%;
+    display: inline-flex;
+    margin: 0em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     border: 25px solid #333;
 }
 .black {
@@ -47,4 +65,9 @@ p {
     text-align:center;
     display: table-cell;
     vertical-align:middle;
+}
+
+.buttonbarcontainer {
+    margin: auto;
+    display: inline-block;
 }
