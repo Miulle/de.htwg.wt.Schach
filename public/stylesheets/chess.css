@@ -11,9 +11,16 @@ h1 {
 
 }h3 {
      color: black;
-     text-align: left;
+     text-align: center;
      font-family: impact;
      font-size: 30px;
+ }
+
+h4 {
+     color: black;
+     text-align: center;
+     font-family: impact;
+     font-size: 10px;
  }
 
 p {
@@ -50,4 +57,14 @@ p {
 }
 .buttoncontainer {
     margin: 20px;
+}
+.icon {
+    color: black;
+    text-align: center;
+    font-family: impact;
+    font-size: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: auto;
+    height: auto;
 }
