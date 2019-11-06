@@ -18,10 +18,14 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
     Ok(views.html.schach(gameController))
   }
 
-  def move (from1: Int, from2: Int, to1: Int, to2: Int) = Action {
-    gameController.savePiecePoint(Point(from1, from2))
+  def move (to1: Int, to2: Int) = Action {
+    //gameController.savePiecePoint(Point(from1, from2))
     gameController.getSelectedPoint(Point(to1, to2))
     Ok(views.html.schach(gameController))
+  }
+
+  def savePiece(from1: Int, from2: Int): Unit = {
+    gameController.savePiecePoint(Point(from1, from2))
   }
 
   def restart = Action {
