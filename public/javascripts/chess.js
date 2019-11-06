@@ -4,7 +4,6 @@ $( document ).ready(function() {
 });
 
 var counter = 0;
-
 var col1 = 0;
 var row1 = 0;
 
@@ -19,7 +18,7 @@ function clickFct(elmnt) {
 
 function movePiece(elmnt) {
     //call route
-    alert(counter);
+    //alert(counter);
     if (counter === 0) {
         col1 = elmnt.id.charAt(0);
         row1 = elmnt.id.charAt(1);
