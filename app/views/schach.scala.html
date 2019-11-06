@@ -42,27 +42,28 @@
         </div>
     </nav>
 
+    <script src="javascripts/chess.js"></script>
     <div class="chessboard">
     @for(row <- 0 until 8) {
         @for(col <- 0 until 8) {
             @if(row % 2 == 0){
                 @if(col % 2 == 0){
-                    <div class= "@{"black"}">
-                    @piece(col, row)
+                    <div style="cursor:pointer" onclick="clickFct(elmnt)" class="@{"black"}">
+                        @piece(col, row)
                     </div>
                 }else{
-                    <div class= "@{"white"}">
-                    @piece(col, row)
+                    <div style="cursor:pointer" onclick="clickFct(elmnt)" class="@{"white"}">
+                        @piece(col, row)
                     </div>
                 }
             }else{
                 @if(col % 2 == 0){
-                    <div class= "@{"white"}">
-                    @piece(col, row)
+                    <div style="cursor:pointer" onclick="clickFct(elmnt)" class="@{"white"}">
+                        @piece(col, row)
                     </div>
                 }else{
-                    <div class= "@{"black"}">
-                    @piece(col, row)
+                    <div style="cursor:pointer" onclick="clickFct(elmnt)" class="@{"black"}">
+                        @piece(col, row)
                     </div>
                 }
             }
@@ -73,4 +74,5 @@
     <div class="buttoncontainer">
         <a href="/restart" class="btn btn-primary">Restart<br></a>
     </div>
+
 }
