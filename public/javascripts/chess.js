@@ -3,7 +3,10 @@ $( document ).ready(function() {
     registerClick();
 });
 
-let counter = 0;
+var counter = 0;
+
+var col1 = 0;
+var row1 = 0;
 
 function highlightTest(elmnt) {
     alert("" + elmnt.id);
@@ -16,27 +19,20 @@ function clickFct(elmnt) {
 
 function movePiece(elmnt) {
     //call route
+    alert(counter);
     if (counter === 0) {
-        //call selectpiece Route
-        $.ajax({
-            type: "GET",
-            url: "/schach/savePiece/:from1/:from2"
-        })
-        counter = 1;
+        col1 = elmnt.id.charAt(0);
+        row1 = elmnt.id.charAt(1);
+        counter++;
     } else if (counter === 1) {
-        //call movepiece route
-        $.ajax({
-            type: "GET",
-            url: "/schach/move/:to1/:to2"
-        })
-        counter = 0;
+        window.location = ("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
     }
 }
 
 function registerClick() {
     for (var col = 0; col < 8; col++) {
         for (var row = 0; row < 8; row++) {
-            $("#" + col + row).click(function() { movePiece(this)});
+            $("#" + col + row).click(function() { movePiece(this) });
         }
     }
 }
