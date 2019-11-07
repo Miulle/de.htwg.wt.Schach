@@ -46,6 +46,7 @@ p {
     text-align:center;
     display: table-cell;
     vertical-align:middle;
+    cursor: pointer;
 }
 .white {
     float: left;
@@ -58,7 +59,17 @@ p {
     text-align:center;
     display: table-cell;
     vertical-align:middle;
+    cursor: pointer;
 }
+
+.black:hover {
+    background: yellow;
+}
+
+.white:hover {
+    background: yellow;
+}
+
 .buttoncontainer {
     margin: 20px;
 }
