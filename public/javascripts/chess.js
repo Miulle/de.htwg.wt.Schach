@@ -30,28 +30,58 @@ class Board {
             let bPX = parseInt(JSON.stringify(json["gameboard"]["board"][0][square]).slice(2, 3));
             let bPY = parseInt(JSON.stringify(json["gameboard"]["board"][0][square]).slice(3, 4));
             this.squares[square] = new Array();
-            
+
             switch(boardPiece) {
                 case "Pawn":
-                    this.squares[bPX][bPY] = "Pawn(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9817;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9823;</span>";
+                    }
                     break;
                 case "EmptyField":
-                    this.squares[bPX][bPY] = "EmptyField(" + bPSide + ")";
+                    this.squares[bPX][bPY] = "";
                     break;
                 case "Rook":
-                    this.squares[bPX][bPY] = "Rook(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9814;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9820;</span>";
+                    }
                     break;
                 case "Knight":
-                    this.squares[bPX][bPY] = "Knight(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9816;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9822;</span>";
+                    }
                     break;
                 case "King":
-                    this.squares[bPX][bPY] = "King(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9812;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9818;</span>";
+                    }
                     break;
                 case "Queen":
-                    this.squares[bPX][bPY] = "Queen(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9813;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9819;</span>";
+                    }
                     break;
                 case "Bishop":
-                    this.squares[bPX][bPY] = "Bishop(" + bPSide + ")";
+                    if (bPSide === "w") {
+                        this.squares[bPX][bPY] = "<span>&#9815;</span>";
+                    }
+                    else {
+                        this.squares[bPX][bPY] = "<span>&#9821;</span>";
+                    }
             }
         }
     }
