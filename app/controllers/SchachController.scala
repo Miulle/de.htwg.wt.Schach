@@ -30,7 +30,6 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
   }
 
   def gameToJson = Action {
-    gameController.gameToJson()
-    Ok(views.html.schach(gameController))
+    Ok(gameController.gameToJson)
   }
 }
