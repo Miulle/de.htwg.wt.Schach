@@ -133,7 +133,7 @@ function movePiece(elmnt) {
         row1 = elmnt.id.charAt(1);
         counter++;
     } else if (counter === 1) {
-        window.location = ("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
+        $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
     }
 }
 
