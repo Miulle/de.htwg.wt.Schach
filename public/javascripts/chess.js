@@ -11,7 +11,7 @@ class Board {
         this.moveDone = false;
         this.player1Turn = true;
         this.player2Turn = false;
-        this.squares = [];
+        this.squares = new Array();
     }
 
     fill(json) {
@@ -23,40 +23,41 @@ class Board {
         this.player1Turn = json["gameboard"]["playerTurnW"];
         this.player2Turn = json["gameboard"]["playerTurnB"];
 
-        for (var square = 0; square < 64; col++) {
-            var boardPiecesLength = json["gameboard"]["board"][0][square].toString().length;
-            var boardPiece = json["gameboard"]["board"][0][square].slice(12, boardPiecesLength - 6).toString();
-            var bPSide = json["gameboard"]["board"][0][square].slice(boardPiecesLength - 5, boardPiecesLength - 4).toString();
-            var bPX = json["gameboard"]["board"][0][square].slice(2, 3).toString.parseInt;
-            var bPY = json["gameboard"]["board"][0][square].slice(3, 4).toString.parseInt;
-        }
-
-        switch(boardPiece) {
-            case "Pawn":
-                this.squares[bPX][bPY] = "Pawn(" + bPSide + ")"
-                break;
-            case "EmptyField":
-                this.squares[bPX][bPY] = "EmptyField(" + bPSide + ")"
-                break;
-            case "Rook":
-                this.squares[bPX][bPY] = "Rook(" + bPSide + ")"
-                break;
-            case "Knight":
-                this.squares[bPX][bPY] = "Knight(" + bPSide + ")"
-                break;
-            case "King":
-                this.squares[bPX][bPY] = "King(" + bPSide + ")"
-                break;
-            case "Queen":
-                this.squares[bPX][bPY] = "Queen(" + bPSide + ")"
-                break;
-            case "Bishop":
-                this.squares[bPX][bPY] = "Bishop(" + bPSide + ")"
+        for (let square = 0; square < 64; square++) {
+            let boardPiecesLength = JSON.stringify(json["gameboard"]["board"][0][square]).length;
+            let boardPiece = JSON.stringify(json["gameboard"]["board"][0][square]).slice(12, boardPiecesLength - 6);
+            let bPSide = JSON.stringify(json["gameboard"]["board"][0][square]).slice(boardPiecesLength - 5, boardPiecesLength - 4);
+            let bPX = parseInt(JSON.stringify(json["gameboard"]["board"][0][square]).slice(2, 3));
+            let bPY = parseInt(JSON.stringify(json["gameboard"]["board"][0][square]).slice(3, 4));
+            this.squares[square] = new Array();
+            
+            switch(boardPiece) {
+                case "Pawn":
+                    this.squares[bPX][bPY] = "Pawn(" + bPSide + ")";
+                    break;
+                case "EmptyField":
+                    this.squares[bPX][bPY] = "EmptyField(" + bPSide + ")";
+                    break;
+                case "Rook":
+                    this.squares[bPX][bPY] = "Rook(" + bPSide + ")";
+                    break;
+                case "Knight":
+                    this.squares[bPX][bPY] = "Knight(" + bPSide + ")";
+                    break;
+                case "King":
+                    this.squares[bPX][bPY] = "King(" + bPSide + ")";
+                    break;
+                case "Queen":
+                    this.squares[bPX][bPY] = "Queen(" + bPSide + ")";
+                    break;
+                case "Bishop":
+                    this.squares[bPX][bPY] = "Bishop(" + bPSide + ")";
+            }
         }
     }
 }
 
-let board = new Board()
+let board = new Board();
 
 function loadJson() {
     $.ajax({
@@ -67,8 +68,8 @@ function loadJson() {
         success: function (result) {
             board = new Board();
             board.fill(result);
-            updateBoard(board);
             registerClickListener();
+            updateBoard(board);
         }
     });
 }
