@@ -41,7 +41,7 @@ class Board {
                     }
                     break;
                 case "EmptyField":
-                    this.squares[bPX][bPY] = "";
+                    this.squares[bPX][bPY] = "<span>" + "" + "</span>";
                     break;
                 case "Rook":
                     if (bPSide === "w") {
@@ -126,8 +126,6 @@ function clickFct(elmnt) {
 }
 
 function movePiece(elmnt) {
-    //call route
-    //alert(counter);
     if (counter === 0) {
         col1 = elmnt.id.charAt(0);
         row1 = elmnt.id.charAt(1);
@@ -149,3 +147,53 @@ $( document ).ready(function() {
     console.log( "Document is ready" );
     loadJson();
 });
+
+/*
+function whatPiece(boardPiece, bPX, bPY, bPSide) {
+    switch(boardPiece) {
+        case "Pawn":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9817;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9823;</span>";
+            }
+            break;
+        case "EmptyField":
+            board.squares[bPX][bPY] = "";
+            break;
+        case "Rook":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9814;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9820;</span>";
+            }
+            break;
+        case "Knight":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9816;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9822;</span>";
+            }
+            break;
+        case "King":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9812;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9818;</span>";
+            }
+            break;
+        case "Queen":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9813;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9819;</span>";
+            }
+            break;
+        case "Bishop":
+            if (bPSide === "w") {
+                board.squares[bPX][bPY] = "<span>&#9815;</span>";
+            } else {
+                board.squares[bPX][bPY] = "<span>&#9821;</span>";
+            }
+    }
+}*/
