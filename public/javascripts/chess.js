@@ -112,7 +112,6 @@ function updateBoard(board) {
             }
         }
     }
-
 }
 
 
@@ -132,7 +131,20 @@ function movePiece(elmnt) {
         counter++;
     } else if (counter === 1) {
         $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
+        counter++;
     }
+    //Ansatz aber nicht der beste...
+    $.ajax({
+        method: "GET",
+        url: "/schach",
+
+        success: function () {
+            if (counter === 2) {
+                location.reload();
+            }
+        }
+    });
+
 }
 
 function registerClickListener() {
