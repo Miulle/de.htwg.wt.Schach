@@ -133,11 +133,10 @@ function movePiece(elmnt) {
         $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
         counter++;
     }
-    //Ansatz aber nicht der beste...
+    //reload page to update
     $.ajax({
         method: "GET",
-        url: "/schach",
-
+        url: "/json",
         success: function () {
             if (counter === 2) {
                 location.reload();
