@@ -137,6 +137,8 @@ function movePiece(elmnt) {
     $.ajax({
         method: "GET",
         url: "/json",
+        dataType: "json",
+
         success: function () {
             if (counter === 2) {
                 location.reload();
