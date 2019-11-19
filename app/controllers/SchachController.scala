@@ -28,4 +28,8 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
     gameController.reset()
     Ok(views.html.schach(gameController))
   }
+
+  def gameToJson = Action {
+    Ok(gameController.gameToJson())
+  }
 }

@@ -19,3 +19,5 @@ GET     /schach/move/:from1/:from2/:to1/:to2             controllers.SchachContr
 GET     /about                      controllers.SchachController.about
 
 GET     /restart                      controllers.SchachController.restart
+
+GET     /json                       controllers.SchachController.gameToJson
