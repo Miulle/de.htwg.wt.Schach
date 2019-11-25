@@ -87,7 +87,7 @@ class Board {
     }
 }
 
-let board = new Board();
+let board;
 
 function loadJson() {
     $.ajax({
@@ -108,7 +108,7 @@ function updateBoard(board) {
     for (let col = 0; col < 8; col++) {
         for (let row = 0; row < 8; row++) {
             if(board.squares[col][row] != 0){
-                $("#" + col + row).html(board.squares[col][row]);
+                $("#" + col + row).html(board.squares[col][row].toString());
             }
         }
     }
@@ -131,20 +131,22 @@ function movePiece(elmnt) {
         counter++;
     } else if (counter === 1) {
         $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
-        counter++;
+        counter = 0;
+        // updateBoard(board)
+        // $.get("/schach");
+        $.ajax({
+            method: "GET",
+            url: "/json",
+            dataType: "json",
+
+            success: function (data) {
+                location.reload();
+                //     board.fill(data)
+                // updateBoard(board)
+            }
+        });
+        // console.log(counter);
     }
-    //reload page to update
-    // $.ajax({
-    //     method: "GET",
-    //     url: "/json",
-    //     dataType: "json",
-    //
-    //     success: function () {
-    //         if (counter === 2) {
-    //             location.reload();
-    //         }
-    //     }
-    // });
 
 }
 
@@ -182,9 +184,25 @@ function connectWebSocket() {
     };
 }
 
+function boardInit() {
+    for(let col = 0; col < 8; col++) {
+        for(let row = 0; row < 8; row++) {
+            let square = $("#" + col + row);
+            if((row + col) % 2 !== 0) {
+                square.addClass("white");
+            } else {
+                square.addClass("black");
+            }
+            //
+        }
+    }
+}
+
 
 $( document ).ready(function() {
     console.log( "Document is ready" );
+    boardInit();
+    board = new Board();
     loadJson();
     connectWebSocket();
 });
