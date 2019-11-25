@@ -4,9 +4,13 @@ import javax.inject._
 import play.api.mvc._
 import de.htwg.se.ChinaSchach.ChinaSchach
 import de.htwg.se.ChinaSchach.util.Point
+import play.api.libs.streams.ActorFlow
+import akka.actor.ActorSystem
+import akka.stream.Materializer
+import akka.actor._
 
 @Singleton
-class SchachController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class SchachController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
   val gameController = ChinaSchach.controller
   def boardAsText = gameController.drawGameboard()
 
@@ -31,5 +35,28 @@ class SchachController @Inject()(cc: ControllerComponents) extends AbstractContr
 
   def gameToJson = Action {
     Ok(gameController.gameToJson())
+  }
+
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connect received")
+      MyWebSocketActor.props(out)
+    }
+  }
+
+  object MyWebSocketActor {
+    def props(out: ActorRef) = {
+      println("Object created")
+      Props(new MyWebSocketActor(out))
+    }
+  }
+
+  class MyWebSocketActor(out: ActorRef) extends Actor {
+    println("Class created")
+    def receive = {
+      case msg: String =>
+        out ! ("I received your message: " + msg)
+        println("Received message "+ msg)
+    }
   }
 }
