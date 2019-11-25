@@ -59,7 +59,7 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
 
     def receive = {
       case msg: String =>
-        out ! (gameController.gameToJson.toString)
+//        out ! (gameController.gameToJson.toString)
         println("Sent Json to Client"+ msg)
     }
 
