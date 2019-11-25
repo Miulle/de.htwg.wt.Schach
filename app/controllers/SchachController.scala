@@ -8,6 +8,7 @@ import play.api.libs.streams.ActorFlow
 import akka.actor.ActorSystem
 import akka.stream.Materializer
 import akka.actor._
+import de.htwg.se.ChinaSchach.controller.controllerComponent.Changed
 
 import scala.swing.Reactor
 
@@ -55,15 +56,16 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
   class SchachWebSocketActor(out: ActorRef) extends Actor with Reactor{
     listenTo(gameController)
 
+
     def receive = {
       case msg: String =>
         out ! (gameController.gameToJson.toString)
         println("Sent Json to Client"+ msg)
     }
 
-/*    reactions += {
+    reactions += {
       case event: Changed => sendJsonToClient
-    }*/
+    }
 
     def sendJsonToClient = {
       println("Received event from Controller")

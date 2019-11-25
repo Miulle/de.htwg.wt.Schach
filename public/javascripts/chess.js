@@ -98,8 +98,8 @@ function loadJson() {
         success: function (result) {
             board = new Board();
             board.fill(result);
-            registerClickListener();
             updateBoard(board);
+            registerClickListener();
         }
     });
 }
@@ -134,17 +134,17 @@ function movePiece(elmnt) {
         counter++;
     }
     //reload page to update
-    $.ajax({
-        method: "GET",
-        url: "/json",
-        dataType: "json",
-
-        success: function () {
-            if (counter === 2) {
-                location.reload();
-            }
-        }
-    });
+    // $.ajax({
+    //     method: "GET",
+    //     url: "/json",
+    //     dataType: "json",
+    //
+    //     success: function () {
+    //         if (counter === 2) {
+    //             location.reload();
+    //         }
+    //     }
+    // });
 
 }
 
@@ -179,7 +179,6 @@ function connectWebSocket() {
             updateBoard(board);
             registerClickListener();
         }
-
     };
 }
 
