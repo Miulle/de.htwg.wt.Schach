@@ -9,6 +9,8 @@ import akka.actor.ActorSystem
 import akka.stream.Materializer
 import akka.actor._
 
+import scala.swing.Reactor
+
 @Singleton
 class SchachController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
   val gameController = ChinaSchach.controller
@@ -40,23 +42,32 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
   def socket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
       println("Connect received")
-      MyWebSocketActor.props(out)
+      SchachWebSocketActorFactory.create(out)
     }
   }
 
-  object MyWebSocketActor {
-    def props(out: ActorRef) = {
-      println("Object created")
-      Props(new MyWebSocketActor(out))
+  object SchachWebSocketActorFactory {
+    def create(out: ActorRef) = {
+      Props(new SchachWebSocketActor(out))
     }
   }
 
-  class MyWebSocketActor(out: ActorRef) extends Actor {
-    println("Class created")
+  class SchachWebSocketActor(out: ActorRef) extends Actor with Reactor{
+    listenTo(gameController)
+
     def receive = {
       case msg: String =>
-        out ! ("I received your message: " + msg)
-        println("Received message "+ msg)
+        out ! (gameController.gameToJson.toString)
+        println("Sent Json to Client"+ msg)
+    }
+
+/*    reactions += {
+      case event: Changed => sendJsonToClient
+    }*/
+
+    def sendJsonToClient = {
+      println("Received event from Controller")
+      out ! (gameController.gameToJson.toString)
     }
   }
 }
