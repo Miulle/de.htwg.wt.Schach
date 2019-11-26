@@ -87,7 +87,7 @@ class Board {
     }
 }
 
-let board = new Board();
+let board;
 
 function loadJson() {
     $.ajax({
@@ -98,8 +98,8 @@ function loadJson() {
         success: function (result) {
             board = new Board();
             board.fill(result);
-            registerClickListener();
             updateBoard(board);
+            registerClickListener();
         }
     });
 }
@@ -108,7 +108,7 @@ function updateBoard(board) {
     for (let col = 0; col < 8; col++) {
         for (let row = 0; row < 8; row++) {
             if(board.squares[col][row] != 0){
-                $("#" + col + row).html(board.squares[col][row]);
+                $("#" + col + row).html(board.squares[col][row].toString());
             }
         }
     }
@@ -131,20 +131,8 @@ function movePiece(elmnt) {
         counter++;
     } else if (counter === 1) {
         $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
-        counter++;
+        counter = 0;
     }
-    //reload page to update
-    $.ajax({
-        method: "GET",
-        url: "/json",
-        dataType: "json",
-
-        success: function () {
-            if (counter === 2) {
-                location.reload();
-            }
-        }
-    });
 
 }
 
@@ -156,57 +144,49 @@ function registerClickListener() {
     }
 }
 
+function connectWebSocket() {
+    var websocket = new WebSocket("ws://localhost:9000/websocket");
+    websocket.setTimeout
+
+    websocket.onopen = function(event) {
+        console.log("Connected to Websocket");
+    }
+
+    websocket.onclose = function () {
+        console.log('Connection with Websocket Closed!');
+    };
+
+    websocket.onerror = function (error) {
+        console.log('Error in Websocket Occured: ' + error);
+    };
+
+    websocket.onmessage = function (e) {
+        if (typeof e.data === "string") {
+            let json = JSON.parse(e.data);
+            board.fill(json);
+            updateBoard(board);
+        }
+    };
+}
+
+function boardInit() {
+    for(let col = 0; col < 8; col++) {
+        for(let row = 0; row < 8; row++) {
+            let square = $("#" + col + row);
+            if((row + col) % 2 !== 0) {
+                square.addClass("white");
+            } else {
+                square.addClass("black");
+            }
+        }
+    }
+}
+
+
 $( document ).ready(function() {
     console.log( "Document is ready" );
+    boardInit();
+    board = new Board();
     loadJson();
+    connectWebSocket();
 });
-
-/*
-function whatPiece(boardPiece, bPX, bPY, bPSide) {
-    switch(boardPiece) {
-        case "Pawn":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9817;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9823;</span>";
-            }
-            break;
-        case "EmptyField":
-            board.squares[bPX][bPY] = "";
-            break;
-        case "Rook":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9814;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9820;</span>";
-            }
-            break;
-        case "Knight":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9816;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9822;</span>";
-            }
-            break;
-        case "King":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9812;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9818;</span>";
-            }
-            break;
-        case "Queen":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9813;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9819;</span>";
-            }
-            break;
-        case "Bishop":
-            if (bPSide === "w") {
-                board.squares[bPX][bPY] = "<span>&#9815;</span>";
-            } else {
-                board.squares[bPX][bPY] = "<span>&#9821;</span>";
-            }
-    }
-}*/
