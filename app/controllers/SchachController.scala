@@ -40,6 +40,10 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
     Ok(gameController.gameToJson())
   }
 
+  def schachPolymer = Action {
+    Ok(views.html.schachPolymer())
+  }
+
   def socket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
       println("Connect received")
