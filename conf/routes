@@ -23,5 +23,3 @@ GET     /restart                      controllers.SchachController.restart
 GET     /json                       controllers.SchachController.gameToJson
 
 GET     /websocket                  controllers.SchachController.socket
-
-GET     /schachPolymer              controllers.SchachController.schachPolymer
