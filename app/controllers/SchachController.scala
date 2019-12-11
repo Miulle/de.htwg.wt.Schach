@@ -47,6 +47,10 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
     }
   }
 
+  def chessPolymer = Action {
+    Ok(views.html.test())
+  }
+
   object SchachWebSocketActorFactory {
     def create(out: ActorRef) = {
       Props(new SchachWebSocketActor(out))
