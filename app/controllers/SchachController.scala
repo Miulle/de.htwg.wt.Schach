@@ -10,10 +10,11 @@ import akka.stream.Materializer
 import akka.actor._
 import de.htwg.se.ChinaSchach.controller.controllerComponent.Changed
 
+import scala.concurrent.{ ExecutionContext, Future }
 import scala.swing.Reactor
 
 @Singleton
-class SchachController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
+class SchachController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer, ec: ExecutionContext) extends AbstractController(cc) {
   val gameController = ChinaSchach.controller
   def boardAsText = gameController.drawGameboard()
 
@@ -51,8 +52,8 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
     Ok(views.html.test())
   }
 
-  def chessVue = Action {
-    Ok(views.html.test())
+  def chessVue = Action.async {
+    Future(Ok(views.html.chessVue(gameController)))
   }
 
   object SchachWebSocketActorFactory {
