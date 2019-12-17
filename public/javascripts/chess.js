@@ -185,7 +185,13 @@ function boardInit() {
 
 $( document ).ready(function() {
     console.log( "Document is ready" );
-    boardInit();
+    //boardInit();
+    var app = new Vue({
+        el: '#chess-app',
+        render: function(html) {
+            return html(ChessApp.default, {});
+        }
+    })
     board = new Board();
     loadJson();
     connectWebSocket();

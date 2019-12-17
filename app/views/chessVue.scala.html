@@ -6,7 +6,7 @@
 
 @main("HTWG Schach") {
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+    <script src="@routes.Assets.versioned("javascripts/vue.js")" ></script>
     <script src='@routes.Assets.versioned("vue/components/chess-app.js")'></script>
     <script src="@routes.Assets.versioned("polymer-3-first-element/icon-toggle-finished/icon-toggle.js")"></script>
     <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/chess.css")' />
@@ -30,17 +30,6 @@
     </nav>
 
     <div id="chess-app"></div>
-
-@*    This goes into chess-app.vue*@
-@*    <div class="chessboard">*@
-@*    @for(row <- 0 until 8) {*@
-@*        @for(col <- 0 until 8) {*@
-@*            <div id="@col@row">*@
-@*                    </div>*@
-@*        }*@
-@*        <div class="clear"></div>*@
-@*    }*@
-@*    </div>*@
 
     <div class="buttoncontainer">
         <a href="/restart" class="btn btn-primary">Restart<br></a>
