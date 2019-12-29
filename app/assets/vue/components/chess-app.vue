@@ -1,6 +1,6 @@
 <template>
   <div class="chess-app">
-    <_chessboard></_chessboard>
+    <chessboard></chessboard>
   </div>
 </template>
 
