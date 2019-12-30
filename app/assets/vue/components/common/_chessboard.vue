@@ -3,7 +3,7 @@ import Vue from 'vue';
 <template>
   <div class="chessboard">
     <div v-for="row in rows" :key="row">
-      <div v-for="col in cols" :key="col" :id="row + '-' + col">
+      <div v-for="col in cols" :key="col" :id="col + '-' + row">
       </div>
       <div class="clear"></div>
     </div>
