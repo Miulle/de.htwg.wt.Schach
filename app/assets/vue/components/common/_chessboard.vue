@@ -2,13 +2,11 @@ import Vue from 'vue';
 
 <template>
   <div class="chessboard">
-    @for(row <- 0 until 8) {
-    @for(col <- 0 until 8) {
-    <div id="@col@row">
+    <div v-for="row in rows" :key="row">
+      <div v-for="col in cols" :key="col" :id="row + '-' + col">
+      </div>
+      <div class="clear"></div>
     </div>
-    }
-    <div class="clear"></div>
-    }
   </div>
 </template>
 
@@ -16,11 +14,13 @@ import Vue from 'vue';
   export default {
     data: () => ({
       size: 8,
+      rows: [0, 1, 2, 3, 4, 5, 6, 7],
+      cols: [0, 1, 2, 3, 4, 5, 6, 7],
     }),
     mounted: function () {
-      for(let col = 0; col < size; col++) {
+      for(let col = 0; col < 8; col++) {
         for(let row = 0; row < 8; row++) {
-          let square = $("#" + col + row);
+          let square = $("#" + col + "-" + row);
           if((row + col) % 2 !== 0) {
             square.addClass("white");
           } else {
@@ -32,7 +32,7 @@ import Vue from 'vue';
   };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 
   body {
     background-color: #D8D8D8;

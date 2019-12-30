@@ -29,4 +29,4 @@ GET     /chessPolymer               controllers.SchachController.chessPolymer
 
 GET     /chessVue               controllers.SchachController.chessVue
 
-GET     /node_modules/*file         controllers.Assets.at(path="/node_modules", file)
+GET     /node_modules/*file         controllers.Assets.at(path="/public/node_modules", file)

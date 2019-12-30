@@ -24,7 +24,7 @@ libraryDependencies += "javax.xml.bind" % "jaxb-api" % "2.1"
 Assets / VueKeys.vuefy / VueKeys.prodCommands := Set("stage")
 
 // The location of the webpack binary. For windows, it might be `webpack.cmd`.
-Assets / VueKeys.vuefy / VueKeys.webpackBinary := "./node_modules/.bin/webpack"
+Assets / VueKeys.vuefy / VueKeys.webpackBinary := (new File(".") / "node_modules" / ".bin" / "webpack.cmd").getAbsolutePath
 
 // The location of the webpack configuration.
 Assets / VueKeys.vuefy / VueKeys.webpackConfig := "./webpack.config.js"

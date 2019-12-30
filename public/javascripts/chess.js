@@ -108,7 +108,7 @@ function updateBoard(board) {
     for (let col = 0; col < 8; col++) {
         for (let row = 0; row < 8; row++) {
             if(board.squares[col][row] != 0){
-                $("#" + col + row).html(board.squares[col][row].toString());
+                $("#" + col + '-' + row).html(board.squares[col][row].toString());
             }
         }
     }
@@ -139,7 +139,7 @@ function movePiece(elmnt) {
 function registerClickListener() {
     for (var col = 0; col < 8; col++) {
         for (var row = 0; row < 8; row++) {
-            $("#" + col + row).click(function() { movePiece(this) });
+            $("#" + col + '-' + row).click(function() { movePiece(this) });
         }
     }
 }
