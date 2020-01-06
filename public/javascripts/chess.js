@@ -127,10 +127,10 @@ function clickFct(elmnt) {
 function movePiece(elmnt) {
     if (counter === 0) {
         col1 = elmnt.id.charAt(0);
-        row1 = elmnt.id.charAt(1);
+        row1 = elmnt.id.charAt(2);
         counter++;
     } else if (counter === 1) {
-        $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(1));
+        $.get("/schach/move/" + col1 + "/" + row1 + "/" + elmnt.id.charAt(0) + "/" + elmnt.id.charAt(2));
         counter = 0;
     }
 
@@ -186,6 +186,12 @@ function boardInit() {
 $( document ).ready(function() {
     console.log( "Document is ready" );
     //boardInit();
+    var app = new Vue({
+        el: '#chess-app',
+        render: function(html) {
+            return html(ChessApp.default, {});
+        }
+    })
     board = new Board();
     loadJson();
     connectWebSocket();
