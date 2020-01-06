@@ -20,7 +20,7 @@ import Vue from 'vue';
     mounted: function () {
       for(let col = 0; col < 8; col++) {
         for(let row = 0; row < 8; row++) {
-          let square = $("#" + col + "-" + row);
+          let square = $("#" + row + "-" + col);
           if((row + col) % 2 !== 0) {
             square.addClass("white");
           } else {
@@ -66,15 +66,17 @@ import Vue from 'vue';
   }
 
   .chessboard {
-    width:40vw;
-    height: 40vw;
+    width:46.8vw;
+    height: 46.8vw;
+    max-height: 100vw;
+    max-width: 100vw;
     margin: auto;
     border: 1vw solid #333;
   }
   .black {
     float: left;
-    width: 12.5%;
-    height: 12.5%;
+    width: 1.4em;
+    height: 1.4em;
     max-height: 100vw;
     max-width: 100vw;
     background-color: #999;
@@ -86,8 +88,8 @@ import Vue from 'vue';
   }
   .white {
     float: left;
-    width: 12.5%;
-    height: 12.5%;
+    width: 1.4em;
+    height: 1.4em;
     max-height: 100vw;
     max-width: 100vw;
     background-color: #fff;
