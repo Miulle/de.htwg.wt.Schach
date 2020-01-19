@@ -3,32 +3,35 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.about
+GET     /                                       controllers.HomeController.about
 # An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
+GET     /count                                  controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET     /message                    controllers.AsyncController.message
+GET     /message                                controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(file)
+GET     /assets/*file                           controllers.Assets.versioned(file)
 
-GET     /schach                      controllers.SchachController.schach
+GET     /schach                                 controllers.SchachController.schach
 
-GET     /schach/move/:from1/:from2/:to1/:to2             controllers.SchachController.move(from1: Int, from2: Int, to1: Int, to2: Int)
+GET     /schach/move/:from1/:from2/:to1/:to2    controllers.SchachController.move(from1: Int, from2: Int, to1: Int, to2: Int)
 
-GET     /about                      controllers.SchachController.about
+GET     /about                                  controllers.SchachController.about
 
-GET     /restart                      controllers.SchachController.restart
+GET     /restart                                controllers.SchachController.restart
 
-GET     /json                       controllers.SchachController.gameToJson
+GET     /json                                   controllers.SchachController.gameToJson
 
-GET     /websocket                  controllers.SchachController.socket
+GET     /websocket                              controllers.SchachController.socket
 
 
-GET     /chessPolymer               controllers.SchachController.chessPolymer
+GET     /chessPolymer                           controllers.SchachController.chessPolymer
 
-GET     /chessVue               controllers.SchachController.chessVue
+GET     /chessVue                               controllers.SchachController.chessVue
 
-GET     /node_modules/*file         controllers.Assets.at(path="/public/node_modules", file)
+GET     /node_modules/*file                     controllers.Assets.at(path="/public/node_modules", file)
 
-GET     /offline               controllers.SchachController.offlineChess
+GET     /service-worker.js                      controllers.Assets.at(path="/public", file="javascripts/service-worker.js")
+GET     /manifest.json                          controllers.Assets.at(path="/public", file="manifest.json")
+GET     /registerServiceWorker.js               controllers.Assets.at(path="/public", file="javascripts/registerServiceWorker.js")
+GET     /offline                                controllers.SchachController.offlineChess
