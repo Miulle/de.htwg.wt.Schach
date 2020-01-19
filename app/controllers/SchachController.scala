@@ -32,9 +32,10 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
     Ok(gameController.gameToJson())
   }
 
-  def restart = Action {
+  def restart = Action.async {
     gameController.reset()
-    Ok(views.html.schach(gameController))
+    //Ok(views.html.schach(gameController))
+    Future(Ok(views.html.chessVue(gameController)))
   }
 
   def gameToJson = Action {
@@ -50,6 +51,11 @@ class SchachController @Inject()(cc: ControllerComponents) (implicit system: Act
 
   def chessPolymer = Action {
     Ok(views.html.test())
+  }
+
+  def offlineChess = Action {
+    implicit request: Request[AnyContent] =>
+      Ok(views.html.offlineChess())
   }
 
   def chessVue = Action.async {

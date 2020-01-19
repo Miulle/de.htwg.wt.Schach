@@ -1,0 +1,13 @@
+{
+  "name": "HTWG Chess",
+  "short_name": "Chess",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "HTWG Chess",
+  "icons": [{
+    "src": "",
+    "sizes": "",
+    "type": ""
+  }]
+}

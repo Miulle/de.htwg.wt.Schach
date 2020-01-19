@@ -30,3 +30,5 @@ GET     /chessPolymer               controllers.SchachController.chessPolymer
 GET     /chessVue               controllers.SchachController.chessVue
 
 GET     /node_modules/*file         controllers.Assets.at(path="/public/node_modules", file)
+
+GET     /offline               controllers.SchachController.offlineChess
