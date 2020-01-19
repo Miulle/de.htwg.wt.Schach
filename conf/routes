@@ -34,4 +34,4 @@ GET     /node_modules/*file                     controllers.Assets.at(path="/pub
 GET     /service-worker.js                      controllers.Assets.at(path="/public", file="javascripts/service-worker.js")
 GET     /manifest.json                          controllers.Assets.at(path="/public", file="manifest.json")
 GET     /registerServiceWorker.js               controllers.Assets.at(path="/public", file="javascripts/registerServiceWorker.js")
-GET     /offline                                controllers.SchachController.offlineChess
+GET     /offline.html                           controllers.SchachController.offlineChess
